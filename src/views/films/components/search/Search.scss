@@ -1,3 +1,18 @@
-.search{
+@import "src/styles/styles";
+.search {
+  background-color: $deepGray;
+  padding: 10px;
 
+  .custom-debounced-input {
+    input {
+      width: 100%;
+      background-color:$gray;
+      color: $white;
+      font-size: 20px;
+    }
+
+    input::placeholder{
+      color: $white;
+    }
+  }
 }

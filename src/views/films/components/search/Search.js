@@ -2,10 +2,12 @@ import React from 'react';
 import DebouncedInput from "../../../../components/debouncedInput/DebouncedInput";
 import './Search.scss'
 
-const Search = () => {
+const Search = ({onChange}) => {
     return (
         <div className={'search'}>
-            <DebouncedInput/>
+            <DebouncedInput onChange={onChange}
+                            placeholder={'Search'}
+            />
         </div>
     );
 };
