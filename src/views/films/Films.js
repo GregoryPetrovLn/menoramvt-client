@@ -10,10 +10,14 @@ const Films = () => {
 
     }, [])
 
+    const createRequestToSearchItems = (e) => {
+        console.log(e.target.value)
+    }
+
 
     return (
         <div>
-            <Search/>
+            <Search onChange={createRequestToSearchItems}/>
         </div>
     );
 };
