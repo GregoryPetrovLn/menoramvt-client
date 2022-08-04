@@ -1,11 +1,19 @@
 @import "src/styles/styles";
+
 .custom-debounced-input {
+  img {
+    width: 20px;
+    position: absolute;
+    top: 17px;
+    left: 17px
+  }
+
   input {
     height: 35px;
     border-radius: 25px;
     outline: none;
     border: 1px solid $gray;
     -webkit-box-sizing: border-box;
-    padding-left: 10px;
+    padding-left: 30px;
   }
 }
