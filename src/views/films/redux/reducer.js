@@ -1,4 +1,4 @@
-import {GET_FILMS} from "./actionTypes";
+import {GET_FILM_INFO, GET_FILMS} from "./actionTypes";
 
 const initialState = {
     isLoading: false,
@@ -16,7 +16,14 @@ export const reducer = (state = initialState, {type, payload}) => {
         case GET_FILMS.SUCCESS:
             return {...state, list: payload.data, isLoading: false}
         case GET_FILMS.ERROR:
-            return {...state, dataById: null, list: null, error: null, isLoading: false}
+            return {...state, dataById: null, list: null, error: payload.error, isLoading: false}
+
+        case GET_FILM_INFO.INIT:
+            return {...state, isLoadingById: true, dataById: null, error: null}
+        case GET_FILM_INFO.SUCCESS:
+            return {...state, isLoadingById: false, dataById: payload.data, error: null}
+        case GET_FILM_INFO.ERROR:
+            return {...state, isLoadingById: false, dataById: null, error: payload.error}
         default:
             return state
     }

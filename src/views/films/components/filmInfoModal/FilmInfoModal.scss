@@ -1,0 +1,21 @@
+
+.film-info-modal {
+  &__body-wrapper {
+    padding: 10px;
+    img{
+      width: 90px;
+    }
+    .row{
+      display: flex;
+      width: 100%;
+    }
+    .first-row{
+      .text-block{
+        margin-left: 10px;
+      }
+    }
+    .second-row{
+      margin-top: 20px;
+    }
+  }
+}

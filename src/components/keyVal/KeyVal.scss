@@ -1,0 +1,12 @@
+@import "src/styles/styles";
+.key-val-item {
+  margin-bottom: 10px;
+  &__key {
+    font-weight: bold;
+  }
+  &__val{
+    color: $deepGray;
+  }
+
+
+}
