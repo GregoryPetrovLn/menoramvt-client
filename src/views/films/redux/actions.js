@@ -1,4 +1,4 @@
-import {GET_FILM_INFO, GET_FILMS} from "./actionTypes";
+import {GET_FILM_INFO, GET_FILMS, TOGGLE_MODAL_INFO} from "./actionTypes";
 import axios from "axios";
 
 export const getFilms = (title) => {
@@ -6,11 +6,7 @@ export const getFilms = (title) => {
         try {
             dispatch({type: GET_FILMS.INIT})
             const {data} = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/ombdb/films?s=${title}`)
-            if (data.success === true) {
-                dispatch({type: GET_FILMS.SUCCESS, payload: data})
-            } else {
-                dispatch({type: GET_FILMS.ERROR, payload: data.error})
-            }
+            dispatch({type: GET_FILMS.SUCCESS, payload: data})
         } catch (e) {
             dispatch({type: GET_FILMS.ERROR})
         }
@@ -21,10 +17,12 @@ export const getFilmById = (id) => {
     return async (dispatch) => {
         try {
             dispatch({type: GET_FILM_INFO.INIT})
-            const result = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/ombdb/films/${id}`)
-            dispatch({type: GET_FILM_INFO.SUCCESS, payload: result.data})
+            const {data} = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/ombdb/films/${id}`)
+            dispatch({type: GET_FILM_INFO.SUCCESS, payload: data})
         } catch (e) {
-            dispatch({type: GET_FILM_INFO.ERROR})
+            dispatch({type: GET_FILM_INFO.ERROR, payload: e.message})
         }
     }
 }
+
+export const modalTogglerAction = (payload) => ({type: TOGGLE_MODAL_INFO, payload})

@@ -5,7 +5,7 @@ import KeyVal from "../../../../components/keyVal/KeyVal";
 import Grid from '@mui/material/Grid';
 
 const FilmInfoModal = ({data, isLoading, open, handleClose}) => {
-    const createFields = (keys) => data && keys.map(key => <KeyVal name={key} val={data[key]}/>)
+    const createFields = (keys) => data && keys.map((key,idx) => <KeyVal key={idx} name={key} val={data[key]}/>)
     return (
         <div className={'film-info-modal'}>
             <ModalView open={open}

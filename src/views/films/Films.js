@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import Search from "./components/search/Search";
 import Body from "./components/body/Body";
-import {getFilmById, getFilms} from "./redux/actions";
+import {getFilmById, getFilms, modalTogglerAction} from "./redux/actions";
 import FilmInfoModal from "./components/filmInfoModal/FilmInfoModal";
 
 const Films = () => {
@@ -11,15 +11,20 @@ const Films = () => {
         isLoading,
         isLoadingById,
         dataById,
-        list
+        list,
+        isOpenModal,
+        error
     } = useSelector(state => state.films)
-    const [isOpenModal, setIsOpenModal] = useState(false)
 
     useEffect(() => {
         createRequestToSearchItems('Batman')
     }, [])
 
-    const modalToggler = () => setIsOpenModal(!isOpenModal)
+    useEffect(() => {
+        error && alert(error)
+    }, [error])
+
+    const modalToggler = () => dispatch(modalTogglerAction(!isOpenModal))
 
     const createRequestToSearchItems = (search) => {
         dispatch(getFilms(search))
@@ -38,10 +43,10 @@ const Films = () => {
                   isLoading={isLoading}
                   onPosterClick={onPosterClick}/>
 
-            {isOpenModal && <FilmInfoModal open={isOpenModal}
-                                           isLoading={isLoadingById}
-                                           handleClose={modalToggler}
-                                           data={dataById}/>}
+            {dataById && <FilmInfoModal open={isOpenModal}
+                                        isLoading={isLoadingById}
+                                        handleClose={modalToggler}
+                                        data={dataById}/>}
         </div>
     );
 };
