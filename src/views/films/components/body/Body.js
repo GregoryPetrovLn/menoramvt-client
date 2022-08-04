@@ -2,6 +2,7 @@ import React from 'react';
 import './Body.scss'
 import Card from "../../../../components/card/Card";
 import Loader from "../../../../components/loader/Loader";
+import NoItems from "../../../../components/no-items-preview/NoItems";
 
 const Body = ({title, list, isLoading, onPosterClick}) => {
     return (
@@ -9,7 +10,7 @@ const Body = ({title, list, isLoading, onPosterClick}) => {
             <div className={'films-body__title'}>{title}</div>
             {isLoading ?
                 <Loader/> :
-                <div className={'films-body__content-wrapper'}>
+                list && list.length > 0 ? <div className={'films-body__content-wrapper'}>
                     {list?.map(item => (
                         <Card key={item?.imdbID}>
                             <img onClick={() => onPosterClick(item?.imdbID)}
@@ -18,7 +19,8 @@ const Body = ({title, list, isLoading, onPosterClick}) => {
                             />
                         </Card>
                     ))}
-                </div>}
+                </div> : <NoItems/>
+            }
         </div>
     );
 };

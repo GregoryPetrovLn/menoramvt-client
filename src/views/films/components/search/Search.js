@@ -5,7 +5,7 @@ import './Search.scss'
 const Search = ({onChange}) => {
     return (
         <div className={'search'}>
-            <DebouncedInput onChange={onChange}
+            <DebouncedInput onChange={(e) => onChange(e.target.value)}
                             placeholder={'Search'}
             />
         </div>

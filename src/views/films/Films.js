@@ -10,20 +10,19 @@ const Films = () => {
     const {
         isLoading,
         isLoadingById,
-        error,
         dataById,
         list
     } = useSelector(state => state.films)
     const [isOpenModal, setIsOpenModal] = useState(false)
 
     useEffect(() => {
-        createRequestToSearchItems()
+        createRequestToSearchItems('Batman')
     }, [])
 
     const modalToggler = () => setIsOpenModal(!isOpenModal)
 
-    const createRequestToSearchItems = (e) => {
-        dispatch(getFilms())
+    const createRequestToSearchItems = (search) => {
+        dispatch(getFilms(search))
     }
 
     const onPosterClick = (id) => {
@@ -35,6 +34,7 @@ const Films = () => {
         <div>
             <Search onChange={createRequestToSearchItems}/>
             <Body list={list}
+                  title={'Popular movies'}
                   isLoading={isLoading}
                   onPosterClick={onPosterClick}/>
 
