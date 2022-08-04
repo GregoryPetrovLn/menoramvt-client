@@ -11,7 +11,9 @@ const Body = ({title, list, isLoading}) => {
                 <Loader/> :
                 <div className={'films-body__content-wrapper'}>
                     {list?.map((item, idx) => (
-                        <Card/>
+                        <Card>
+                            <img src={item?.Poster} alt={'#'}/>
+                        </Card>
                     ))}
                 </div>}
         </div>

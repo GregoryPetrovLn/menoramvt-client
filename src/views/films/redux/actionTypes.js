@@ -1,0 +1,5 @@
+export const GET_FILMS = {
+    INIT: "GET_FILMS_INIT",
+    SUCCESS: "GET_FILMS_SUCCESS",
+    ERROR: "GET_FILMS_ERROR"
+}

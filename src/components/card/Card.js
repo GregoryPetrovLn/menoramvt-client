@@ -1,9 +1,10 @@
 import React from 'react';
 import './Card.scss'
-const Card = ({img}) => {
+
+const Card = ({children}) => {
     return (
         <div className={'custom-card'}>
-
+            {children}
         </div>
     );
 };
