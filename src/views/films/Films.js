@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import Loader from "../../components/loader/Loader";
+import Search from "./components/search/Search";
 
 const Films = () => {
     const dispatch = useDispatch()
@@ -13,7 +13,7 @@ const Films = () => {
 
     return (
         <div>
-
+            <Search/>
         </div>
     );
 };
