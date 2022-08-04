@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import Search from "./components/search/Search";
+import Body from "./components/body/Body";
 
 const Films = () => {
     const dispatch = useDispatch()
@@ -18,6 +19,7 @@ const Films = () => {
     return (
         <div>
             <Search onChange={createRequestToSearchItems}/>
+            <Body/>
         </div>
     );
 };

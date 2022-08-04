@@ -1,0 +1,9 @@
+@import "src/styles/styles";
+
+.films-body {
+  padding: 10px;
+  &__title {
+    font-size: 35px;
+    font-weight: bold;
+  }
+}
