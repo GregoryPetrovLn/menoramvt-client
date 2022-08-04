@@ -1,18 +1,19 @@
 import React from 'react';
 import './Body.scss'
 import Card from "../../../../components/card/Card";
-import {Grid} from "@mui/material";
+import Loader from "../../../../components/loader/Loader";
 
-const Body = ({title}) => {
+const Body = ({title, list, isLoading}) => {
     return (
         <div className={'films-body'}>
             <div className={'films-body__title'}>{title}</div>
-            <div className={'films-body__content-wrapper'}>
-                    {Array(35).fill(null).map((item, idx) => (
-
-                            <Card/>
+            {isLoading ?
+                <Loader/> :
+                <div className={'films-body__content-wrapper'}>
+                    {list?.map((item, idx) => (
+                        <Card/>
                     ))}
-            </div>
+                </div>}
         </div>
     );
 };
