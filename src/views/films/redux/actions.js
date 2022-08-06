@@ -8,7 +8,7 @@ export const getFilms = (title) => {
             const {data} = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/ombdb/films?s=${title}`)
             dispatch({type: GET_FILMS.SUCCESS, payload: data})
         } catch (e) {
-            dispatch({type: GET_FILMS.ERROR})
+            dispatch({type: GET_FILMS.ERROR, payload: e.response.data.error})
         }
     }
 }
@@ -20,7 +20,7 @@ export const getFilmById = (id) => {
             const {data} = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/ombdb/films/${id}`)
             dispatch({type: GET_FILM_INFO.SUCCESS, payload: data})
         } catch (e) {
-            dispatch({type: GET_FILM_INFO.ERROR, payload: e.message})
+            dispatch({type: GET_FILM_INFO.ERROR, payload: e.response.data.error})
         }
     }
 }
