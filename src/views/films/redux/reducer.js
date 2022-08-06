@@ -10,9 +10,6 @@ const initialState = {
 }
 
 export const reducer = (state = initialState, {type, payload}) => {
-    console.log(type, payload)
-    console.log(initialState)
-
     switch (type) {
         case GET_FILMS.INIT:
             return {...state, dataById: null, list: null, error: null, isLoading: true}
