@@ -2,7 +2,7 @@ import React from 'react';
 import './Body.scss'
 import Card from "../../../../components/card/Card";
 import Loader from "../../../../components/loader/Loader";
-import NoItems from "../../../../components/no-items-preview/NoItems";
+import NoItems from "../../../../components/noItemsPreview/NoItems";
 
 const Body = ({title, list, isLoading, onPosterClick}) => {
     return (

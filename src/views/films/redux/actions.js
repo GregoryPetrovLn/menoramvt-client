@@ -1,11 +1,12 @@
 import {GET_FILM_INFO, GET_FILMS, TOGGLE_MODAL_INFO} from "./actionTypes";
 import axios from "axios";
 
-export const getFilms = (title) => {
+export const getFilms = (title, page = 1) => {
+    title = title && title.length > 0 ? title : 'Batman'
     return async (dispatch) => {
         try {
             dispatch({type: GET_FILMS.INIT})
-            const {data} = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/omdb/films?s=${title}`)
+            const {data} = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/omdb/films?page=${page}&s=${title}`)
             dispatch({type: GET_FILMS.SUCCESS, payload: data})
         } catch (e) {
             dispatch({type: GET_FILMS.ERROR, payload: e.response.data.error})

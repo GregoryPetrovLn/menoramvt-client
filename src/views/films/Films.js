@@ -26,9 +26,8 @@ const Films = () => {
 
     const modalToggler = () => dispatch(modalTogglerAction(!isOpenModal))
 
-    const createRequestToSearchItems = (search) => {
-        dispatch(getFilms(search))
-    }
+    const createRequestToSearchItems = (search) => dispatch(getFilms(search))
+
 
     const onPosterClick = (id) => {
         dispatch(getFilmById(id))
